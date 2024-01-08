@@ -49,7 +49,7 @@ class GetBalanceController extends Controller
                     'url' => 'https://yourcompany.com/example_item',
                 ]
             ],
-            'success_redirect_url' => 'http://127.0.0.1:8000/',
+            'success_redirect_url' => env('APP_URL') . '/api/webhook',
             'fees' => [
                 [
                     'type' => 'ADMIN',
