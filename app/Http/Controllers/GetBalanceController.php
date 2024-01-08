@@ -8,6 +8,11 @@ use App\Models\Customer;
 
 class GetBalanceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('web', ['except' => ['handleWebhook']]);
+    }
+    
     public function getBalance()
     {
         $secretKey = env('XENDIT_SECRET_KEY');
