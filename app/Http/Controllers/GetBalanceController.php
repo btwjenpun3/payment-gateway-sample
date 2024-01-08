@@ -73,19 +73,6 @@ class GetBalanceController extends Controller
 
     public function handleCallback(Request $request)
     {
-        $url = 'https://api.xendit.co/callback_urls/invoice';
-        $apiKey = env('XENDIT_SECRET_KEY');
-
-        $response = Http::withHeaders([
-            'Content-Type' => 'application/json',
-            'Authorization' => 'Basic ' . base64_encode($apiKey . ':'),
-        ])->post($url, [
-            'url' => 'https://payment.einvit.id/api/webhook',
-        ]);
-        Customer::where('user_id', $response['user_id'])->update([
-            'status' => $response['status']
-        ]);
-        $result = $response->json();
-        return $result;
+        return $request->all();
     }
 }
