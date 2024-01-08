@@ -73,6 +73,9 @@ class GetBalanceController extends Controller
 
     public function handleCallback(Request $request)
     {
-        return $request->all();
+        $response = $request->all();
+        Customer::where('invoice_id', $response['id'])->update([
+            'status' => $response['status']
+        ]);
     }
 }
