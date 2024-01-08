@@ -72,6 +72,17 @@ class GetBalanceController extends Controller
 
     public function handleCallback(Request $request)
     {
-        return response()->json();
+        $url = 'https://api.xendit.co/callback_urls';
+        $apiKey = env('XENDIT_SECRET_KEY');
+
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Basic ' . base64_encode($apiKey . ':'),
+        ])->post($url, [
+            'url' => 'https://www.xendit.co/callback_catcher',
+        ]);
+
+        $result = $response->json();
+        echo json_encode($result);
     }
 }
