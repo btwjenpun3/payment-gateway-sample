@@ -10,9 +10,9 @@ class GetBalanceController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('web', ['except' => ['handleWebhook']]);
+        $this->middleware('web', ['except' => ['handleCallback']]);
     }
-    
+
     public function getBalance()
     {
         $secretKey = env('XENDIT_SECRET_KEY');
