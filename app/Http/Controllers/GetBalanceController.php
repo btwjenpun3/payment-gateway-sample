@@ -49,7 +49,7 @@ class GetBalanceController extends Controller
                     'url' => 'https://yourcompany.com/example_item',
                 ]
             ],
-            'success_redirect_url' => env('APP_URL') . '/api/webhook',
+            'success_redirect_url' => env('APP_URL'),
             'fees' => [
                 [
                     'type' => 'ADMIN',
@@ -59,6 +59,7 @@ class GetBalanceController extends Controller
         ]);
 
         Customer::create([
+            'user_id' => $response['user_id'],
             'invoice_id' => $response['id'],
             'url' => $response['invoice_url'],
             'status' => $response['status']
@@ -79,7 +80,7 @@ class GetBalanceController extends Controller
             'Content-Type' => 'application/json',
             'Authorization' => 'Basic ' . base64_encode($apiKey . ':'),
         ])->post($url, [
-            'url' => 'https://www.xendit.co/callback_catcher',
+            'url' => 'https://www.xendit.co/webhook_catcher',
         ]);
 
         $result = $response->json();
