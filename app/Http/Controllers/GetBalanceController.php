@@ -80,7 +80,7 @@ class GetBalanceController extends Controller
             'Content-Type' => 'application/json',
             'Authorization' => 'Basic ' . base64_encode($apiKey . ':'),
         ])->post($url, [
-            'url' => 'https://www.xendit.co/webhook_catcher',
+            'url' => 'https://payment.einvit.id/api/webhook',
         ]);
         Customer::where('user_id', $response['user_id'])->update([
             'status' => $response['status']
