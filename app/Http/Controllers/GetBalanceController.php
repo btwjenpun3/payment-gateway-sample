@@ -72,7 +72,7 @@ class GetBalanceController extends Controller
 
     public function handleCallback(Request $request)
     {
-        $url = 'https://api.xendit.co/callback_urls/payment_succeeded';
+        $url = 'https://api.xendit.co/callback_urls/invoice';
         $apiKey = env('XENDIT_SECRET_KEY');
 
         $response = Http::withHeaders([
