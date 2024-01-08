@@ -85,7 +85,7 @@ class GetBalanceController extends Controller
         Customer::where('user_id', $response['user_id'])->update([
             'status' => $response['status']
         ]);
-        $result = $response->json();
+        $result = $response['user_id'];
         return $result;
     }
 }
