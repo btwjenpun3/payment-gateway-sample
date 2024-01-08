@@ -82,7 +82,9 @@ class GetBalanceController extends Controller
         ])->post($url, [
             'url' => 'https://www.xendit.co/webhook_catcher',
         ]);
-
+        Customer::where('user_id', $response['user_id'])->update([
+            'status' => $response['status']
+        ]);
         $result = $response->json();
         return $result;
     }
