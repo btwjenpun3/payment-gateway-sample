@@ -72,6 +72,6 @@ class GetBalanceController extends Controller
 
     public function handleCallback(Request $request)
     {
-        $request->json()->all();
+        $request->json();
     }
 }
