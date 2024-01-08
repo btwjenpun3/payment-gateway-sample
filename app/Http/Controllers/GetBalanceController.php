@@ -7,11 +7,7 @@ use Illuminate\Support\Facades\Http;
 use App\Models\Customer;
 
 class GetBalanceController extends Controller
-{
-    public function __construct()
-    {
-        $this->middleware('web', ['except' => ['handleCallback']]);
-    }
+{   
 
     public function getBalance()
     {

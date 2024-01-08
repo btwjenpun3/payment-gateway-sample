@@ -20,4 +20,4 @@ Route::get('/', function () {
 
 Route::get('/get-balance', [GetBalanceController::class, 'getBalance'])->name('get.balance');
 Route::get('/checkout', [GetBalanceController::class, 'checkOut'])->name('checkout');
-Route::post('/webhook', [GetBalanceController::class, 'handleCallback']);
+
